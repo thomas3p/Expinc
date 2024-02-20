@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+	<div class="sidebar">
+        <a href="#" class="logo">
+            <i class='bx bx-code-alt'></i>
+            <div class="logo-name"><span>Exp</span>inc</div>
+        </a>
+        <ul class="side-menu">
+            <li ><a href="/dashboard"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a href="/records"><i class='bx bx-analyse'></i>Records</a></li>
+            <li class="active"><a href="/profile"><i class='bx bx-group'></i>Profile</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a th:href="@{/logout}" class="logout">
+                    <i class='bx bx-log-out-circle'></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+	</div>
+    <div class="content">
+        <nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                </div>
+            </form>
+        </nav>
+	    <main>
+			<a href="javascript:history.back()">Back</a>
+			<div class="header">
+				<h1>Edit Profile</h1>
+            </div>
+            <div class="bottom-data">
+				 <div class="orders2">
+			        <form method="post" th:object="${profile}" th:action="@{'/edit-profile/' + ${profile.id}}">
+			            <div class="form-input">
+					        <label for="fname">ชื่อ:</label>
+					        <input type="text" id="fname" name="fname" th:field="*{fname}" required><br>
+		                </div>
+						<div class="form-input">
+				            <label for="lname">นามสกุล:</label>
+        					<input type="text" id="lname" name="lname" th:field="*{lname}" required><br>
+		                </div>
+		                
+		                <div class="form-input">
+				            <label for="email">Email:</label>
+        					<input type="text" id="email" name="email"  th:field="*{email}" required><br>
+		                </div>
+		                
+						<div class="form-input">
+				            <label for="telephone">เบอร์โทรศัพท์:</label>
+        					<input type="text" id="telephone" name="telephone"  th:field="*{telephone}" required><br>
+		                </div>
+		                <div class="center">							
+				            <button type="submit">Save Profile</button>
+						</div>
+			        </form>
+	        	</div>
+	        </div>
+        </main>
+    </div>
+</body>
+</html>
+

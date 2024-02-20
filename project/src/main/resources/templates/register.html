@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+	<link rel="stylesheet" type="text/css" href="/css/global.css">
+	<link rel="stylesheet" type="text/css" href="/css/login.css">
+</head>
+<body>
+		<div class="container">
+		    <form style="height: calc(440 * var(--unit))"  action="/register" method="post" class="formContainer">
+				<p class="formHeader">สมัครสมาชิก</p>
+				<div class="loginInputContainer">
+					<input type="text" name="username" placeholder="ชื่อผู้ใช้" class="loginInputField">
+				</div>
+				<div class="loginInputContainer">
+		      		<input type="password" name="password" placeholder="รหัสผ่าน" class="loginInputField">
+		      </div>
+		      <div class="loginInputContainer">
+		      		<input type="email" name="email" placeholder="Email" class="loginInputField">
+		      </div>
+		      <div class="loginSubmitButtonContainer">
+				  <input type="submit" value="สมัครสมาชิก" class="loginSubmitButton">
+			  </div>
+		      <div class="loginSuggestTextContainer">
+				  <p>ถ้ามีบัญชีแล้ว <a href="/login">เข้าสู่ระบบ</a></p>
+			  </div>
+		    </form>
+		  </div>
+
+</body>
+</html>

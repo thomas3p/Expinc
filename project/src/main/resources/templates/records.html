@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Records</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+</head>
+<body>
+	<div class="sidebar">
+        <a href="#" class="logo">
+            <i class='bx bx-code-alt'></i>
+            <div class="logo-name"><span>Exp</span>inc</div>
+        </a>
+        <ul class="side-menu">
+            <li ><a href="/dashboard"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li class="active"><a href="/records"><i class='bx bx-analyse'></i>Records</a></li>
+            <li><a href="/profile"><i class='bx bx-group'></i>Profile</a></li>
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a th:href="@{/logout}" class="logout">
+                    <i class='bx bx-log-out-circle'></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                </div>
+            </form>
+        </nav>
+        <main>
+			<div class="header">
+				<h1>Records</h1>
+                <a href="/add-transaction" class="report">
+                    <span>Add Record</span>
+                </a>
+            </div>
+          <div class="bottom-data">
+                <div class="orders">
+                    <div class="header">
+                        <i class='bx bx-receipt'></i>
+                        <h3>Recent Records</h3>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>      </th>
+                                <th>Description</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="transaction:${latestTransactions}">
+                                <td th:text="${transaction.type}"> 
+                                <td th:text="${transaction.description}"></td>
+                                <td th:text="${#dates.format(transaction.time, 'HH:mm')+' '+{transaction.date}}"></td>
+                                <td th:text="${transaction.amount}"></td>
+								<td>
+								    <a th:href="@{'/edit-transaction/' + ${transaction.id}}">Edit</a>
+								    <a th:href="@{'/delete-transaction/' + ${transaction.id}}">									   Delete
+									</a>
+								</td>
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Reminders -->
+
+                <!-- End of Reminders-->
+
+            </div>
+		</main>
+    </div>
+	<script th:src="@{/js/index.js}"></script>
+	<script>
+	    function openPopup(event, href) {
+    event.preventDefault(); // ยกเลิกการป้องกันการนำทางที่มีอยู่ (ถ้ามี)
+
+    // ตรวจสอบว่า Popup มีชื่อคลาส "popup" หรือไม่
+    var popup = document.querySelector('.popup');
+
+    if (popup) {
+        // ตั้งค่า href ใน Popup ตามลิงก์ที่คลิก
+        popup.querySelector('.popup-content').innerHTML = `
+            <p>คุณแน่ใจหรือว่าต้องการลบรายการนี้?</p>
+            <a href="${href}" class="confirm-delete">ยืนยัน</a>
+            <a href="#" class="cancel-delete" onclick="closePopup(event)">ยกเลิก</a>
+        `;
+
+        // แสดง Popup
+        popup.style.display = 'block';
+    }
+}
+
+function closePopup(event) {
+    event.preventDefault(); // ยกเลิกการป้องกันการนำทางที่มีอยู่ (ถ้ามี)
+
+    // ซ่อน Popup
+    var popup = document.querySelector('.popup');
+    if (popup) {
+        popup.style.display = 'none';
+    }
+}
+
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: #C81D25;
+    --primaryVariat: #FF5A5F;
+    --secondary: #0B3954;
+    --secondaryVariant: #087E8B;
+    --accent: #BFD7EA;
+
+    --mono100: #FFFFFF;
+    --mono200: #FAFAFA;
+    --mono300: #E8E8E9;
+    --mono400: #BBBBBC;
+    --mono500: #8E8E8F;
+    --mono600: #606062;
+    --mono700: #333335;
+    --mono800: #1C1C1E;
+    --mono900: #000000;
+
+    --alert: #FF0000;
+    --warning: #FFC216;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    :root {
+        --unit: (1vh / 8.1);
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    :root {
+        --unit: (1vw / 14.4);
+    }
+}
+
+@media (max-width: 767px) {
+    :root {
+        --unit: (1vw / 3.75);
+    }
+}
+
+

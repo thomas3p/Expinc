@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+	<div class="sidebar">
+        <a href="#" class="logo">
+            <i class='bx bx-code-alt'></i>
+            <div class="logo-name"><span>Exp</span>inc</div>
+        </a>
+        <ul class="side-menu">
+            <li><a href="/dashboard"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a href="/records"><i class='bx bx-analyse'></i>Records</a></li>
+            <li class="active"><a href="/profile"><i class='bx bx-group'></i>Profile</a></li>
+          
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a th:href="@{/logout}" class="logout">
+                    <i class='bx bx-log-out-circle'></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+		<nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                </div>
+            </form>
+        </nav>
+        <main>
+			<div class="header">
+				<h1>Profile</h1>
+                <a th:href="@{/edit-profile/{id}(id=${profile.id})}" class="report">
+                    <span>Edit</span>
+                </a>
+            </div>
+        	<div class="bottom-data">
+				 <div class="orders">
+				    <table>
+				        <tr>
+				            <td>ชื่อ:</td>
+				            <td th:text="${profile.fname}">First Name</td>
+				        </tr>
+				        <tr>
+				            <td>นามสกุล:</td>
+				            <td th:text="${profile.lname}">Last Name</td>
+				        </tr>
+				        <tr>
+				            <td>Email:</td>
+				            <td th:text="${profile.email}">Email</td>
+				        </tr>
+				        <tr>
+				            <td>เบอร์โทรศัพท์:</td>
+				            <td th:text="${profile.telephone}">Telephone</td>
+				        </tr>
+				    </table>
+			        
+	        	</div>
+	        </div>
+		</main>
+    </div>
+</body>
+</html>
